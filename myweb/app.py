@@ -7,9 +7,6 @@ import os
 app = Flask(__name__)
 app.secret_key = "rahasia123"
 
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'app.secret_key')
-app.config['DEBUG'] = False
-
 @app.route("/")
 def index():
     events = tampilkan_event()
