@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "nama": "Konser JKT48",
+        "tanggal": "2025-12-20",
+        "lokasi": "Jakarta",
+        "harga": 500000,
+        "stok_tiket": 56
+    },
+    {
+        "id": 2,
+        "nama": "Konser Padi",
+        "tanggal": "2025-11-26",
+        "lokasi": "Jakarta",
+        "harga": 30000,
+        "stok_tiket": 0
+    },
+    {
+        "id": 3,
+        "nama": "Konser YOASOBI",
+        "tanggal": "2025-12-27",
+        "lokasi": "Jakarta",
+        "harga": 750000,
+        "stok_tiket": 200
+    },
+    {
+        "id": 4,
+        "nama": "Mengunjungi Rumah Valen",
+        "tanggal": "2025-11-12",
+        "lokasi": "Klaten",
+        "harga": 10000,
+        "stok_tiket": 0
+    },
+    {
+        "id": 5,
+        "nama": "Konser KOP",
+        "tanggal": "2025-11-25",
+        "lokasi": "Jakarta",
+        "harga": 750000,
+        "stok_tiket": 250
+    }
+]

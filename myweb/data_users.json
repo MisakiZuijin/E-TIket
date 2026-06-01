@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "username": "misaki",
+        "password": "089089",
+        "role": "admin"
+    },
+    {
+        "id": 2,
+        "username": "MisakiZuijin",
+        "password": "089089",
+        "role": "user"
+    },
+    {
+        "id": 3,
+        "username": "theo",
+        "password": "089089",
+        "role": "user"
+    },
+    {
+        "id": 4,
+        "username": "afiq",
+        "password": "089089",
+        "role": "user"
+    },
+    {
+        "id": 5,
+        "username": "rafael",
+        "password": "089089",
+        "role": "user"
+    },
+    {
+        "id": 6,
+        "username": "sherly",
+        "password": "sy161203",
+        "role": "user"
+    }
+]

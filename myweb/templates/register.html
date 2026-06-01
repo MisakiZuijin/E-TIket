@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Registrasi</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="auth-page">
+  <div class="form-container">
+    <h2>Registrasi Akun</h2>
+    <form method="POST">
+      <label>Username:</label><br>
+      <input type="text" name="username" required><br>
+      <label>Password:</label><br>
+      <input type="password" name="password" required><br><br>
+      <button type="submit">Daftar</button>
+    </form>
+    <p>Sudah punya akun? <a href="/login">Login di sini</a></p>
+  </div>
+</body>
+</html>

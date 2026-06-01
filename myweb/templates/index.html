@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Daftar Event</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>🎫 Sistem Pendaftaran Event</h1>
+    {% if session.get('user') %}
+      <p>Halo, {{ session['user']['username'] }} |
+        {% if session['user']['role'] == 'admin' %}
+          <a href="/dashboard">Dashboard</a> |
+        {% else %}
+          <a href="/my_tickets">Tiket Saya</a> |
+        {% endif %}
+        <a href="/logout">Logout</a>
+      </p>
+    {% else %}
+      <p><a href="/login">Login</a> | <a href="/register">Register</a></p>
+    {% endif %}
+  </header>
+
+  <main>
+    <h2>Daftar Event</h2>
+
+    {% if events %}
+      <ul>
+        {% for e in events %}
+          <li>
+            <h3>{{ e.nama }}</h3>
+            <p><strong>Tanggal:</strong> {{ e.tanggal }}</p>
+            <p><strong>Lokasi:</strong> {{ e.lokasi }}</p>
+            <p><strong>Harga:</strong> Rp{{ e.harga }}</p>
+            <p><strong>Stok Tiket:</strong> {{ e.stok_tiket }}</p>
+
+            {% if session.get('user') and session['user']['role'] == 'user' %}
+              {% if e.stok_tiket > 0 %}
+                <form action="/beli_tiket/{{ e.id }}" method="POST">
+                  <label>Jumlah Tiket:</label>
+                  <input type="number" name="jumlah" min="1" max="{{ e.stok_tiket }}" required>
+                  <button type="submit">Beli Sekarang</button>
+                </form>
+              {% else %}
+                <p style="color:red; font-weight:bold;">Tiket Habis!</p>
+              {% endif %}
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Belum ada event yang tersedia.</p>
+    {% endif %}
+  </main>
+</body>
+</html>

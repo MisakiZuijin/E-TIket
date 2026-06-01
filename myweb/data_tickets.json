@@ -1,0 +1,32 @@
+[
+    {
+        "user_id": 2,
+        "event_id": 1,
+        "jumlah": 9,
+        "total_harga": 4500000
+    },
+    {
+        "user_id": 2,
+        "event_id": 2,
+        "jumlah": 3,
+        "total_harga": 90000
+    },
+    {
+        "user_id": 3,
+        "event_id": 4,
+        "jumlah": 100,
+        "total_harga": 1000000
+    },
+    {
+        "user_id": 4,
+        "event_id": 2,
+        "jumlah": 122,
+        "total_harga": 3660000
+    },
+    {
+        "user_id": 5,
+        "event_id": 1,
+        "jumlah": 5,
+        "total_harga": 2500000
+    }
+]

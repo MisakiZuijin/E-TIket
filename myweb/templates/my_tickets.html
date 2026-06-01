@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Tiket Saya</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Tiket Saya</h1>
+    <p>
+      <a href="/">Kembali ke Beranda</a> |
+      <a href="/logout">Logout</a>
+    </p>
+  </header>
+
+  <main>
+    <h2>Daftar Tiket yang Kamu Beli</h2>
+
+    {% if tickets %}
+      <table>
+        <thead>
+          <tr>
+            <th>Nama Event</th>
+            <th>Tanggal</th>
+            <th>Lokasi</th>
+            <th>Harga</th>
+            <th>Jumlah Tiket</th>
+            <th>Total Harga</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for t in tickets %}
+          <tr>
+            <td>{{ t.nama }}</td>
+            <td>{{ t.tanggal }}</td>
+            <td>{{ t.lokasi }}</td>
+            <td>Rp{{ t.harga }}</td>
+            <td>{{ t.jumlah }}</td>
+            <td><strong>Rp{{ t.total_harga }}</strong></td>
+            <td>
+              <form action="/batalkan_tiket/{{ t.event_id }}" method="POST" onsubmit="return confirm('Yakin ingin membatalkan tiket ini?')" style="display:inline;">
+                <button type="submit">Batalkan</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>Kamu belum membeli tiket apapun.</p>
+    {% endif %}
+  </main>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Admin</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Dashboard Admin</h1>
+    <p>
+      Selamat datang, {{ session['user']['username'] }} |
+      <a href="/">Lihat Event</a> |
+      <a href="/logout">Logout</a>
+    </p>
+  </header>
+
+  <main class="dashboard-container">
+
+    <section class="event-form">
+      <h2>Tambah Event Baru</h2>
+      <form method="POST" action="/tambah_event">
+        <div class="form-group">
+          <label>Nama Event:</label>
+          <input type="text" name="nama" placeholder="Contoh: Konser Cahaya Senja" required>
+        </div>
+
+        <div class="form-group">
+          <label>Tanggal:</label>
+          <input type="date" name="tanggal" required>
+        </div>
+
+        <div class="form-group">
+          <label>Lokasi:</label>
+          <input type="text" name="lokasi" placeholder="Contoh: Auditorium Kampus" required>
+        </div>
+
+        <div class="form-group">
+          <label>Harga Tiket (Rp):</label>
+          <input type="number" name="harga" min="0" required>
+        </div>
+
+        <div class="form-group">
+          <label>Jumlah Tiket Tersedia:</label>
+          <input type="number" name="stok_tiket" min="1" placeholder="Contoh: 100" required>
+        </div>
+
+        <div style="grid-column: span 2; text-align: center;">
+          <button type="submit">Tambah Event</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="event-table">
+      <h2>Daftar Event</h2>
+      {% if events %}
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nama Event</th>
+              <th>Tanggal</th>
+              <th>Lokasi</th>
+              <th>Harga</th>
+              <th>Stok Tiket</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for e in events %}
+            <tr>
+              <td>{{ e.id }}</td>
+              <td>{{ e.nama }}</td>
+              <td>{{ e.tanggal }}</td>
+              <td>{{ e.lokasi }}</td>
+              <td>Rp{{ e.harga }}</td>
+              <td>{{ e.stok_tiket }}</td>
+              <td class="action-buttons">
+                <form action="/hapus_event/{{ e.id }}" method="POST">
+                  <button type="submit" class="btn-delete" onclick="return confirm('Yakin ingin menghapus event ini?')">Hapus</button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p>Belum ada event yang ditambahkan.</p>
+      {% endif %}
+    </section>
+
+  </main>
+</body>
+</html>
